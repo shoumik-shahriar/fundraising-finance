@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Founder's Guide to Finance & Fundraising</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:#0F5132;color:#fff;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.hero{padding:72px 5% 52px;max-width:860px;margin:0 auto;text-align:center}
+.hero-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;opacity:.55;margin-bottom:18px}
+.hero h1{font-size:clamp(26px,4vw,46px);font-weight:700;line-height:1.2;margin-bottom:18px}
+.hero h1 span{opacity:.65;font-weight:300}
+.hero p{font-size:15px;opacity:.72;font-weight:300;max-width:520px;margin:0 auto}
+.hero-sub{font-size:12px;opacity:.42;margin-top:10px}
+.divider{width:48px;height:2px;background:rgba(255,255,255,.2);margin:0 auto 44px}
+.filter-section{padding:0 5% 44px;max-width:1100px;margin:0 auto}
+.filter-label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;opacity:.45;margin-bottom:14px;text-align:center}
+.pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pill{padding:8px 18px;border-radius:50px;border:1.5px solid rgba(255,255,255,.28);font-family:'Poppins',sans-serif;font-size:12px;font-weight:500;color:#fff;background:transparent;cursor:pointer;transition:all .2s}
+.pill:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.55)}
+.pill.active{background:#fff;color:#0F5132;border-color:#fff}
+.library{padding:0 5% 80px;max-width:1100px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:26px;cursor:pointer;transition:all .25s;display:flex;flex-direction:column;gap:12px}
+.card:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.32);transform:translateY(-4px)}
+.card-tags{display:flex;gap:7px;flex-wrap:wrap}
+.tag{font-size:10px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;padding:3px 9px;border-radius:50px;background:rgba(255,255,255,.14);color:rgba(255,255,255,.82)}
+.card h3{font-size:16px;font-weight:600;line-height:1.4}
+.card p{font-size:13px;opacity:.68;font-weight:300;line-height:1.75;flex:1}
+.card-meta{font-size:11px;opacity:.45;display:flex;align-items:center;gap:5px}
+.card-meta svg{width:12px;height:12px}
+.read-arrow{display:flex;justify-content:flex-end;opacity:.35;font-size:16px;transition:opacity .2s}
+.card:hover .read-arrow{opacity:.85}
+.overlay{display:none;position:fixed;inset:0;z-index:100;overflow-y:auto}
+.overlay.open{display:block}
+.overlay-bg{position:fixed;inset:0;background:#0c4129}
+.overlay-content{position:relative;z-index:1;min-height:100vh;background:#fff;max-width:740px;margin:0 auto;padding:56px 56px 96px;box-shadow:0 0 60px rgba(0,0,0,.25)}
+.back-btn{display:inline-flex;align-items:center;gap:7px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;color:#0F5132;border:none;background:none;cursor:pointer;padding:0;margin-bottom:36px;opacity:.65;transition:opacity .2s}
+.back-btn:hover{opacity:1}
+.back-btn svg{width:16px;height:16px}
+.overlay-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+.overlay-tag{font-size:10px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;padding:3px 11px;border-radius:50px;background:#e5f2eb;color:#0F5132}
+.overlay-content h2{font-size:26px;font-weight:700;color:#0a3d26;line-height:1.3;margin-bottom:10px}
+.overlay-meta{font-size:12px;color:#999;margin-bottom:32px}
+.article-body{font-size:15px;line-height:1.9;color:#282828;font-weight:300}
+.article-body p{margin-bottom:18px}
+.article-body h3{font-size:17px;font-weight:600;color:#0a3d26;margin:32px 0 10px}
+.article-body ul{margin:0 0 18px 20px}
+.article-body li{margin-bottom:7px}
+footer{border-top:1px solid rgba(255,255,255,.1);padding:32px 5%;text-align:center}
+.footer-name{font-size:14px;font-weight:600;margin-bottom:5px}
+.footer-link{font-size:12px;opacity:.45;display:inline-flex;align-items:center;gap:5px;transition:opacity .2s}
+.footer-link:hover{opacity:.85}
+.footer-link svg{width:14px;height:14px}
+@media(max-width:600px){.overlay-content{padding:36px 24px 72px}}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-label">Shoumik Shahriar</div>
+  <h1>A Founder's Guide to<br><span>Finance & Fundraising</span></h1>
+  <p>Practical knowledge for early-stage founders navigating capital, investors, and financial strategy.</p>
+  <div class="hero-sub">Drawn from 8+ years in startups, consulting, and a USD 8M+ fundraise</div>
+</section>
+
+<div class="divider"></div>
+
+<section class="filter-section">
+  <div class="filter-label">What do you need help with?</div>
+  <div class="pills" id="pills"></div>
+</section>
+
+<section class="library">
+  <div class="grid" id="grid"></div>
+</section>
+
+<footer>
+  <div class="footer-name">Shoumik Shahriar</div>
+  <a href="https://www.linkedin.com/in/shoumik11/" target="_blank" class="footer-link">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    Connect on LinkedIn
+  </a>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-bg"></div>
+  <div class="overlay-content">
+    <button class="back-btn" onclick="closeOverlay()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to library
+    </button>
+    <div class="overlay-tags" id="overlay-tags"></div>
+    <h2 id="overlay-title"></h2>
+    <div class="overlay-meta" id="overlay-meta"></div>
+    <div class="article-body" id="overlay-body"></div>
+  </div>
+</div>
+
+<script>
+const TOPICS = ['All','Fundraising Basics','MIS & Reporting','Due Diligence','Term Sheet','SAFE Note','Cap Table','Financial Metrics','Cash & Runway','Investor Relations','Cost Management','Dashboards','Legal & Compliance'];
+
+const ARTICLES = [
+  {
+    id:1,
+    title:"Fundamentals of Fundraising",
+    summary:"A complete walkthrough of equity rounds — from pitch deck to shareholders agreement — for seed-stage founding teams raising for the first time.",
+    tags:["Fundraising Basics"],
+    readTime:"12 min read",
+    body:`<p>Fundraising is a familiar word in the startup ecosystem. For most high-growth startups, it's an essential step. I've had the privilege of being part of a team that raised USD 8+ million in seed rounds from multiple international and local VC funds. Here's what I learned.</p>
+<h3>What is a Startup?</h3>
+<p>According to Paul Graham, "A startup is a company designed to grow fast." Successful startups typically pass through three phases: initial pre-product-market fit, breakthrough growth after achieving PMF, and eventual maturation as growth naturally slows.</p>
+<h3>Popular Fundraising Instruments</h3>
+<p>Equity gives investors an ownership stake. Debt is borrowed capital with repayment terms. A SAFE note (Simple Agreement for Future Equity) is a convertible instrument that promises equity at a future financing round — no interest, no maturity date. A convertible note is debt that converts into equity, accruing interest until conversion.</p>
+<h3>Who Invests in Startups</h3>
+<p>Angel investors deploy their own capital. Angel syndicates pool resources across multiple individual investors. Incubators and accelerators offer support and sometimes equity in exchange for funding. VC firms pool LP capital and push for hyper-growth exits. PE firms take larger stakes with longer time horizons. Family offices are private wealth vehicles — typically more patient capital.</p>
+<h3>The Four Steps of Equity Fundraising</h3>
+<p><strong>Step 1 — Pitching:</strong> Reach out to investors with an updated pitch deck. Your pitch deck should cover the problem, solution, market size, business model, traction, team, financials, and your ask.</p>
+<p><strong>Step 2 — MIS:</strong> If investors want more, they'll ask for your Management Information System — financial statements with key metrics like GMV, gross margin, EBITDA, burn rate, and runway.</p>
+<p><strong>Step 3 — Term Sheet:</strong> If an investor decides to move forward, they issue a term sheet — a non-binding document covering valuation, liquidation preference, voting rights, board formation, and vesting.</p>
+<p><strong>Step 4 — Due Diligence & Legal Docs:</strong> Investors run financial, legal, and tax due diligence before confirming funding. Completion results in a Shareholders Agreement (SHA) and Share Subscription Agreement (SSA), after which shares are issued and funds transferred.</p>
+<p>Fundraising doesn't guarantee success. It's just an important step in the right direction — and it takes far longer than most founders expect.</p>`
+  },
+  {
+    id:2,
+    title:"Creating MIS for Your Startup",
+    summary:"How to build a Management Information System that gives you — and your investors — a real picture of your business across P&L, cash flow, and balance sheet.",
+    tags:["MIS & Reporting"],
+    readTime:"11 min read",
+    body:`<p>One of the most common questions I get from early-stage operators is about setting up proper reporting. Most startups focus on product and sales and forget to look in the mirror. MIS is that mirror.</p>
+<h3>What is MIS?</h3>
+<p>MIS is the reporting system investors use to track portfolio companies — and what management teams use to make decisions. It's a dashboard of the metrics that matter most for running your business well.</p>
+<h3>Things to Settle Before You Build</h3>
+<p>Be clear on purpose (what decisions will this support?), stakeholders (who reads it?), process (how is data collected?), and accuracy (how do you ensure it's the source of truth?).</p>
+<h3>Key P&L Metrics</h3>
+<p>GMV (total transaction value), Net Revenue, Gross Margin, Contribution Margins (CM1 through CM3), and EBITDA. Don't stop at EBITDA — dig to net profit. EBITDA doesn't tell you if you're profitable.</p>
+<h3>The Contribution Margin Layers</h3>
+<p>CM1 covers warehouse and fulfilment costs. CM2 covers logistics. CM3 covers sales and marketing. Each layer tells a different story. Good CM1 and CM2 but poor CM3 means customers aren't motivated enough to return — a serious warning sign.</p>
+<h3>Cash Flow Metrics</h3>
+<p>Track operating cash flow, investing cash flow, and financing cash flow. Two metrics matter most for startups: Burn Rate (cash outflow minus inflow) and Runway (cash in hand divided by monthly burn rate). A minimum of 18-24 months runway is recommended.</p>
+<h3>Other Key Metrics to Track</h3>
+<p>CAC (Customer Acquisition Cost), Retention Rate, Lifetime Value (LTV), Annual Run Rate (ARR), and Monthly Active Users (MAU). These go beyond the financials to show whether your product is working and your growth is sustainable.</p>`
+  },
+  {
+    id:3,
+    title:"Data Room Development for Startups",
+    summary:"A practical guide to building a fundraising data room — covering financial, tax, and legal document folders — so due diligence moves fast and cleanly.",
+    tags:["Due Diligence"],
+    readTime:"10 min read",
+    body:`<p>When fundraising news breaks, we celebrate the win. What we rarely see is the grueling process behind it: due diligence. It's where fundraising success actually hangs.</p>
+<h3>What is a Data Room?</h3>
+<p>A data room is a secure online space where startups store and share confidential documents with potential investors. It's built around three due diligence areas: Financial (FDD), Tax (TDD), and Legal (LDD).</p>
+<h3>Financial Documents (FDD Folder)</h3>
+<p>Audited financial statements, MIS with reconciliation, transaction-level revenue register from CRM, revenue reconciliation with payment gateway and bank statements, DAU/WAU/MAU data, user cohort and retention data, COGS breakdown with invoices, marketing cost breakdown (digital and other), CAC computation, monthly payroll detail, rental agreements, fixed asset register, intangible asset schedule, bank statements, cap table, related party transactions, A/R and A/P aging schedules.</p>
+<h3>Tax Documents (TDD Folder)</h3>
+<p>ETIN certificate, VAT registration (BIN), audited financials, income tax returns for all years of operation, tax exemption certificates, monthly payment and withholding tax record with challan numbers, transaction-level expenditure breakdown, and all VAT return files for the scope period.</p>
+<h3>Legal Documents (LDD Folder)</h3>
+<p>All RJSC filings and board resolutions, incorporation documents (MoA and AoA), all executed material contracts, trade license, ETIN and BIN certificates, loan agreements, employment contracts and HR manual, intellectual property documentation, and any litigation disclosures.</p>
+<p>Build your data room before you start fundraising. Things move fast after a term sheet is signed. If your data room isn't ready, you will create delays — and delays create doubt.</p>`
+  },
+  {
+    id:4,
+    title:"Fundamentals of Term Sheet",
+    summary:"The 15 key clauses in a startup term sheet — from liquidation preference to drag-along rights — explained in plain language for first-time fundraisers.",
+    tags:["Term Sheet"],
+    readTime:"10 min read",
+    body:`<p>I've reviewed multiple term sheets from international and local investors. This is my effort to help founding teams understand what they're actually signing.</p>
+<h3>1. Valuation</h3>
+<p>Pre-money valuation is what the company is worth before investment. Post-money is pre-money plus the new funding. This determines the investor's ownership percentage.</p>
+<h3>2. Liquidation Preference</h3>
+<p>Determines payout order in a liquidation event. A 1x non-participating preference means the investor gets their money back first, then remaining proceeds go to all shareholders pro-rata. Participating preferred is founder-unfriendly — the investor gets their money back AND participates in the remainder.</p>
+<h3>3. Anti-Dilution</h3>
+<p>Full ratchet adjusts the conversion price down to match any new lower share price — very founder-unfriendly. Broad-based weighted average is the standard acceptable version.</p>
+<h3>4. Founders' Lock-In</h3>
+<p>Vesting (typically 4 years) and cliff periods (typically 1 year) ensure founders earn their equity incrementally. This protects the business and all shareholders if a co-founder exits early.</p>
+<h3>5. Tag Along and Drag Along</h3>
+<p>Tag-along rights let minority shareholders join a majority sale on the same terms. Drag-along rights let majority shareholders force minority holders to participate in a company sale — enabling clean 100% acquisitions.</p>
+<h3>6. Option Pool</h3>
+<p>A portion of equity reserved for employee stock options, typically 10-15%. Creating this pre-funding means existing shareholders dilute rather than the incoming investor.</p>
+<h3>7. Other Key Terms</h3>
+<p>Voting rights, information rights (financial statements, budget access, material event notifications), no-shop clause, exit strategies, conversion rights, dividend rights, conditions precedent, and redemption rights. Each of these can meaningfully affect your outcomes as a founder — understand them before you sign.</p>`
+  },
+  {
+    id:5,
+    title:"Fundamentals of SAFE Note",
+    summary:"What a SAFE note is, why it suits early-stage startups, and how valuation caps, discount rates, and pre vs. post-money structures actually work.",
+    tags:["SAFE Note","Fundraising Basics"],
+    readTime:"8 min read",
+    body:`<p>SAFE notes are slowly gaining popularity among founders and investors in Bangladesh. They're an effective instrument for early-stage fundraising — and worth understanding properly.</p>
+<h3>What is a SAFE Note?</h3>
+<p>SAFE stands for Simple Agreement for Future Equity. Instead of receiving shares immediately, investors get the right to obtain equity at a future trigger event — typically the next financing round or an acquisition. It's not a debt instrument. There are no maturity dates and no interest.</p>
+<h3>Why Use a SAFE Note?</h3>
+<p>Flexibility on valuation — early-stage startups have limited data, making immediate valuation agreement difficult. No immediate dilution for founders. No interest or repayment obligations. Lower legal costs compared to a full equity round.</p>
+<h3>Key Terms in a SAFE Note</h3>
+<p><strong>Valuation Cap:</strong> The maximum valuation at which the SAFE converts into equity. If you raise with a USD 10M cap, investors convert at a maximum USD 10M valuation regardless of the company's actual value at the next round.</p>
+<p><strong>Discount Rate:</strong> Allows investors to convert at a lower price than next-round investors. A 10% discount means SAFE investors pay USD 90 per share when new investors pay USD 100.</p>
+<p><strong>Most Favored Nation (MFN):</strong> When there's no cap or discount, investors receive the same conversion terms as whoever invests in the next round on the best terms.</p>
+<h3>Pre-Money vs. Post-Money SAFE</h3>
+<p>Pre-money SAFEs don't count SAFE conversions when calculating equity, creating cap table confusion. Post-money SAFEs include all conversions in the calculation, providing full clarity on ownership after conversion. Post-money is generally the cleaner and more founder-friendly structure for tracking dilution accurately.</p>
+<h3>Four Types of SAFE Note</h3>
+<p>Valuation cap only. Discount only. Both cap and discount (investor gets whichever is more favorable). Neither cap nor discount — relies on MFN protection.</p>`
+  },
+  {
+    id:6,
+    title:"Guide to Writing Investor Updates",
+    summary:"A structured format for monthly investor updates — covering financial metrics, product performance, highlights, lowlights, and asks — with a full sample template.",
+    tags:["Investor Relations"],
+    readTime:"7 min read",
+    body:`<p>An important part of a founder's job is keeping investors informed. Investor updates are an effective — and underrated — method of maintaining this relationship.</p>
+<h3>Why Founders Should Write Investor Updates</h3>
+<p>They build trust through proactive, transparent communication. They prepare the ground for the next funding round — investors who receive regular updates don't need to be re-educated on your business. They give you access to investor networks, talent pools, and expertise by making specific asks.</p>
+<h3>Key Principles</h3>
+<p>Monthly is standard, quarterly can work for later-stage businesses. Pick a consistent set of metrics and stick to them — don't rotate based on which numbers look best. Maintain a clear, consistent format every month.</p>
+<h3>Structure of an Investor Update</h3>
+<p><strong>1. Context:</strong> Two to three sentences that orient the reader quickly.</p>
+<p><strong>2. Financial Metrics:</strong> Revenue, ARR, Gross Margin, Contribution Margins, EBITDA, Burn Rate, Fund in Hand, Runway. Add qualitative context — don't just drop numbers.</p>
+<p><strong>3. Product and User Metrics:</strong> DAU/MAU, user acquisition, retention rate, activation rate. Retention is the most commonly skipped — and the most revealing.</p>
+<p><strong>4. Highlights and Lowlights:</strong> Be honest about both. An honest founder is far more valuable to an investor than one who paints a rosy picture.</p>
+<p><strong>5. Notable Updates:</strong> Key hires, product launches, partnerships.</p>
+<p><strong>6. Ask:</strong> The more specific, the better. Investors can only help if they know exactly what you need.</p>
+<p><strong>7. Thanks:</strong> Publicly recognizing investors who helped you increases the likelihood of continued support from the entire group.</p>
+<h3>Sample Template</h3>
+<p>Subject: [Company] Investor Update — [Month Year]. Open with a brief context paragraph. List financial metrics with month-on-month comparison. Share product metrics. One highlight. One lowlight. One notable update. One specific ask. Close with thanks to anyone who helped last month.</p>`
+  },
+  {
+    id:7,
+    title:"Understanding Cap Table",
+    summary:"What a cap table is, why it matters, and how it evolves from pre-seed through Series B — with examples of dilution at each stage.",
+    tags:["Cap Table"],
+    readTime:"8 min read",
+    body:`<p>A cap table is the ownership record of your company. It shows who owns what percentage and what type of equity — and it changes significantly with every financing round.</p>
+<h3>What is a Cap Table?</h3>
+<p>A cap table lists all shares and securities a company has issued. It covers shareholders, types of securities (common, preferred, options, warrants, convertible notes), number of shares, ownership percentages, and price per share at different rounds.</p>
+<h3>Why Does Your Business Need One?</h3>
+<p>As investments and ESOPs accumulate, ownership becomes complex. A cap table gives founders and investors clarity on current stakes and the impact of future dilution. It's essential for fundraising negotiations. It also helps manage ESOP conversations — employees can see exactly how their allocation vests over time.</p>
+<h3>Cap Table Across Stages</h3>
+<p><strong>Pre-seed:</strong> Typically just founders. If a VC invests resulting in 20% dilution, the founders now own 80% of a larger pie.</p>
+<p><strong>Seed and Series A:</strong> Preferred shares are issued to investors with specific rights and privileges. An ESOP pool is created or expanded, further diluting existing shareholders.</p>
+<p><strong>Series B and beyond:</strong> Each new round brings more investors and more dilution. Valuation increases (or decreases) at each round affect how much existing shareholders are diluted in real terms.</p>
+<h3>Key Watch-Outs</h3>
+<p>An overly complicated early-stage cap table deters investors. Avoid unnecessary dilution. Be very cautious about issuing equity to advisors in exchange for vague guidance — this is a common early mistake that creates ongoing complications. Managing your cap table is a non-negotiable skill for any founder.</p>`
+  },
+  {
+    id:8,
+    title:"Key Financial Metrics for Early-Stage Businesses",
+    summary:"The P&L, cash flow, and business metrics investors actually look for — with formulas and clear explanations of what each one reveals about your business.",
+    tags:["Financial Metrics"],
+    readTime:"9 min read",
+    body:`<p>How should you measure financial performance at the early stage? What do investors look for? There are no hard and fast rules, but these are the metrics I've found most useful.</p>
+<h3>P&L Metrics</h3>
+<p><strong>ARR (Annual Run Rate):</strong> Monthly Revenue × 12, or Quarterly Revenue × 4. Projects annualised revenue based on current performance.</p>
+<p><strong>Gross Margin:</strong> (Revenue − COGS) / Revenue × 100%. Measures how efficiently you deliver your product or service.</p>
+<p><strong>Contribution Margin:</strong> Sales Revenue − Variable Costs. Shows how much each unit of revenue contributes to covering fixed costs.</p>
+<p><strong>EBITDA Margin:</strong> EBITDA / Total Revenue × 100%. Measures operational profitability, excluding financing and accounting decisions.</p>
+<p><strong>ROCE:</strong> EBIT / Capital Employed × 100%. Evaluates how effectively the business generates returns from invested capital.</p>
+<h3>Cash Flow Metrics</h3>
+<p><strong>Operating Cash Flow:</strong> Net Income + Non-Cash Expenses + Changes in Working Capital. Shows whether the business generates enough cash from operations to sustain itself.</p>
+<p><strong>Burn Rate:</strong> Cash Outflow − Cash Inflow. A positive burn rate means you're spending more than you're bringing in.</p>
+<p><strong>Runway:</strong> Cash Reserves / Monthly Burn Rate. Tells you exactly how many months of operation remain at current spending. Aim for 18-24 months minimum.</p>
+<h3>Other Key Business Metrics</h3>
+<p><strong>CAC:</strong> Total Marketing and Sales Expenses / New Customers Acquired. Measures the efficiency of your acquisition efforts.</p>
+<p><strong>Retention Rate:</strong> [(CE − CN) / S] × 100. High retention signals product-market fit. Low retention signals a product or positioning problem.</p>
+<p><strong>LTV:</strong> Average Purchase Value × Purchase Frequency × Customer Lifespan. The long-term revenue a customer generates. LTV/CAC of 3x or above is a healthy benchmark.</p>
+<p><strong>MAU:</strong> Unique users engaging with your product in a given month. A key engagement and scale indicator.</p>`
+  },
+  {
+    id:9,
+    title:"Critical Cost Mistakes in Early-Stage Startups",
+    summary:"Ten specific ways early-stage startups bleed money — across people, marketing, and operations — and how to avoid each one.",
+    tags:["Cost Management"],
+    readTime:"8 min read",
+    body:`<p>Building a startup is a steep learning curve. The problem is that unguarded decisions come with real financial cost. Here are the areas where I've seen startups consistently bleed money without adding value.</p>
+<h3>People Cost Mistakes</h3>
+<p><strong>1. Excessive hiring:</strong> There's a tendency to throw people at problems without understanding them. This leads to overlapping roles, redundant positions, and inflated payroll. Early-stage startups should aim to be slightly understaffed, not overstaffed. Focus on better, not more.</p>
+<p><strong>2. Lavish employee perks:</strong> Gourmet meals and extravagant retreats drain capital needed for product and growth. Prioritize meaningful benefits that support culture without breaking the bank.</p>
+<p><strong>3. Too many consultants:</strong> Consultants may not understand the startup's chaotic environment. Advice that works in structured organisations often doesn't transfer. Hire consultants selectively with very specific briefs.</p>
+<p><strong>4. Outside leadership hires:</strong> Leaders from large organisations are accustomed to structured environments with large support teams. Plugging them into an early-stage startup rarely works the way founders expect.</p>
+<h3>Marketing Cost Mistakes</h3>
+<p><strong>5. Non-measurable marketing:</strong> Sponsorships and vague brand awareness campaigns drain resources without trackable results. A rule of thumb: every dollar spent on marketing should generate at least one dollar in return.</p>
+<p><strong>6. PR and event sponsorship:</strong> Important eventually, but in early days when cash is tight, focus on ROI over visibility.</p>
+<p><strong>7. Too many channels:</strong> Spreading thin across channels before finding product-market fit wastes energy and money. Focus on the two or three channels that best match your target audience.</p>
+<h3>Operations Cost Mistakes</h3>
+<p><strong>8. Expensive office space:</strong> Fancy offices are a vanity metric. The capital could fund product development or customer acquisition.</p>
+<p><strong>9. Expensive office equipment:</strong> Top-of-the-line gear that doesn't contribute to productivity is capital poorly deployed.</p>
+<p><strong>10. Premature scaling:</strong> Expanding operations before confirming product-market fit leads to costs that outpace revenue and can jeopardize long-term viability.</p>`
+  },
+  {
+    id:10,
+    title:"Cash Runway Management for Startups",
+    summary:"A nine-step operational playbook for managing cash runway — from setting a target to cutting costs across every bucket — based on four years as finance lead.",
+    tags:["Cash & Runway"],
+    readTime:"9 min read",
+    body:`<p>Runway is one of the most important metrics for early-stage startups. I built these practices as finance lead of a startup over four years. Here's what works.</p>
+<h3>What is Cash Runway?</h3>
+<p>Cash runway is the number of months a startup can keep operating before it runs out of cash. Formula: Cash Runway = Funds on Hand / Monthly Burn Rate. A minimum of 18-24 months is recommended.</p>
+<h3>Nine Actions for Extending Runway</h3>
+<p><strong>1. Understand your reality:</strong> Know your monthly burn, current runway, target runway, and what burn level you need to hit that target. Don't start planning without this baseline.</p>
+<p><strong>2. Bucket your costs:</strong> Revenue, COGS, S&M, G&A, and CapEx. Understand the key drivers of each before scenario planning.</p>
+<p><strong>3. Set targets:</strong> Define a runway target first. Back-calculate the EBITDA and net cash flow targets needed to achieve it.</p>
+<p><strong>4. Start with pessimistic revenue:</strong> This is not an optimism exercise. Expect lower inflows than your last 6-9 month average. Prepare for the worst.</p>
+<p><strong>5. Find COGS efficiencies carefully:</strong> Aggressive COGS cuts hurt product quality and customer experience. Focus on renegotiating vendor contracts and pushing for delayed disbursements instead.</p>
+<p><strong>6. Fix S&M leaks:</strong> Separate fixed and variable S&M costs. Raise your ROI threshold on all variable marketing spend. This is often the highest-leverage area.</p>
+<p><strong>7. Dig deep in G&A:</strong> Office rent, utilities, finance and HR salaries, admin — this is where the most inefficiency hides. Cut what isn't essential.</p>
+<p><strong>8. Pause growth CapEx:</strong> When runway is tight, only essential maintenance CapEx should proceed. Growth CapEx can wait unless it generates fast returns.</p>
+<p><strong>9. Communicate clearly:</strong> Runway management requires the whole team. Be candid about the situation and the plan. Hiding the truth delays the response and makes the eventual reckoning worse.</p>`
+  },
+  {
+    id:11,
+    title:"Creating Finance Dashboards for Early-Stage Startups",
+    summary:"How to build daily, weekly, and monthly finance dashboards using Excel or Google Sheets — so the founding team always knows where the business stands.",
+    tags:["Dashboards","MIS & Reporting"],
+    readTime:"8 min read",
+    body:`<p>What gets measured gets managed. But the first step is having the information. Early-stage startups often have zero systems in place — and without information, bad decisions follow.</p>
+<h3>What is the Objective?</h3>
+<p>Monthly financial statements are too slow for operational decisions. Founders need daily, weekly, and monthly data to stay ahead of problems. A simple dashboard built in Excel or Google Sheets solves this without requiring expensive systems.</p>
+<h3>Design Principles</h3>
+<p>Cost-effective (free tools only), flexible (easy to iterate), and simple (fast access over impressive design). Don't build a complicated system just because it makes you feel productive.</p>
+<h3>Daily Dashboard</h3>
+<p>Four components: Cash on hand (how long can you keep operating?), Daily sales (are you hitting the daily target?), Expenses due tomorrow (visibility for authorized approvals), and Burn MTD (cash inflow minus outflow since the start of the month). A positive burn MTD means you're spending more than you're earning so far this month.</p>
+<h3>Weekly Dashboard</h3>
+<p>Six components: Weekly cash flow, sales target vs. actual, costs budgeted vs. actual, S&M expenditure and correlation with revenue, projected burn and cash runway for the month, and important updates (fundraising progress, new hire needs, upcoming CapEx). For runway projection, use budgeted outflow for the rest of the month plus already incurred outflow to avoid distortion from lumpier end-of-month costs like salary and rent.</p>
+<h3>Monthly Dashboard</h3>
+<p>The full P&L, cash flow statement, and key business metrics — linked to your MIS. This is the investor-facing view and the basis for strategic decisions. Building daily and weekly discipline makes the monthly view far more accurate and far less stressful to produce.</p>`
+  },
+  {
+    id:12,
+    title:"10 Finance & Accounting Suggestions for Early-Stage Startups",
+    summary:"Practical operational suggestions across accounting, compliance, and fundraising readiness — for startups that plan to raise from VCs.",
+    tags:["Fundraising Basics","Legal & Compliance"],
+    readTime:"7 min read",
+    body:`<p>The early days are mostly about product and customers. But finance, HR, and legal don't wait. These are the suggestions I'd give any VC-backed startup getting started.</p>
+<h3>Accounting</h3>
+<p><strong>1. Prepare financial statements monthly:</strong> Don't wait for the financial year to end. Monthly statements keep you on top of your numbers and support better decisions. If you don't know how last month went, how will you make the right call this month?</p>
+<p><strong>2. Understand what metrics mean:</strong> You don't need deep finance knowledge. But you need to understand what gross margin, operating cash flow, and EBITDA actually tell you.</p>
+<p><strong>3. Don't capitalize costs outside IFRS:</strong> I've seen startups capitalize costs aggressively to improve EBITDA. This misleads investors and reflects badly on the founding team during due diligence. Build a proper capitalization policy and follow it consistently.</p>
+<h3>Compliance</h3>
+<p><strong>4. Register as a limited company:</strong> Investors cannot invest in a sole proprietorship or partnership. Share transfer requires a limited company structure.</p>
+<p><strong>5. Separate business and personal bank accounts:</strong> This is non-negotiable for clean due diligence. Investigators should not need access to your personal account.</p>
+<p><strong>6. Establish your regulatory submission process:</strong> Tax returns and VAT filings are mandatory. Ignoring them leads to penalties and complications at the worst possible time — during due diligence.</p>
+<h3>Finance & Fundraising</h3>
+<p><strong>7. Obsess over cash flow:</strong> Cash is what keeps the business alive. Track inflows and outflows religiously.</p>
+<p><strong>8. Operate based on a budget:</strong> Without a standard, you can't measure performance. Budget discipline creates company-wide resource accountability.</p>
+<p><strong>9. Add six months to your fundraising timeline:</strong> From my experience, fundraising always takes longer than planned. Pitching, term sheets, due diligence, legal docs — it's a lot of work.</p>
+<p><strong>10. Treat fundraising as a tactic, not a goal:</strong> Raising capital doesn't solve your problems. You still have to chase customers and improve performance every day. Raise and spend money wisely.</p>`
+  },
+  {
+    id:13,
+    title:"The Board Deck Playbook",
+    summary:"How to structure a quarterly board meeting presentation — from key metrics to asks — with dos, don'ts, and a complete slide-by-slide breakdown.",
+    tags:["Investor Relations","MIS & Reporting"],
+    readTime:"8 min read",
+    body:`<p>One of the key roles of a startup CEO is managing relationships with shareholders and board members. Board meetings — typically quarterly — are a core part of that job.</p>
+<h3>Who Attends</h3>
+<p>Board members, board observers, CEO, and CFO. Other team members can be invited based on specific agenda items.</p>
+<h3>The Board Deck Structure</h3>
+<p><strong>Slide 1 — Cover:</strong> Company logo, name, and date.</p>
+<p><strong>Slide 2 — Agenda:</strong> Prepared in advance in consultation with board members so everyone arrives aligned.</p>
+<p><strong>Slide 3 — Key Business Metrics:</strong> A quick quarterly recap of overall performance. Keep it to the most important metrics — don't overload.</p>
+<p><strong>Slide 4 — Financial Overview:</strong> P&L summary, balance sheet highlights, cash position, burn rate, months of runway, and fundraising status.</p>
+<p><strong>Slide 5 — Highlights and Lowlights:</strong> Big wins and significant losses. Board members know it's hard — don't pretend otherwise.</p>
+<p><strong>Slide 6 — Updates and Projections:</strong> Major developments and next-quarter forecasts. Confirm with board members beforehand what level of projection detail they prefer.</p>
+<p><strong>Slide 7 — Product and Tech Update:</strong> Key launches, major tech developments, and execution timelines. This is especially important for tech startups.</p>
+<p><strong>Slide 8 — Team Updates:</strong> Org structure, headcount, and hires in progress.</p>
+<p><strong>Slide 9 — Business Priorities and Next Steps:</strong> Next quarter's focus areas, both core operations and growth projects.</p>
+<p><strong>Slide 10 — Asks:</strong> Specific, actionable requests from the board. Try to get commitments before the meeting ends.</p>
+<p><strong>Appendix (if needed):</strong> Supporting data for deeper discussion.</p>
+<h3>Key Dos and Don'ts</h3>
+<p>Run data-driven discussions. Highlight action items. Don't surprise board members with problems during the meeting — flag key concerns beforehand. Don't overload with detail. Don't tell a fairytale — hiding problems destroys trust.</p>`
+  },
+  {
+    id:14,
+    title:"Suggestions for First-Time Fundraisers",
+    summary:"Operational readiness advice for founding teams raising for the first time — what to do, what to track, and what to avoid throughout the process.",
+    tags:["Fundraising Basics","Investor Relations"],
+    readTime:"9 min read",
+    body:`<p>This is operational advice, not strategy. If you're expecting something that shapes your fundraising strategy, this isn't that. This is about being ready when the conversation starts moving.</p>
+<h3>Things to Do</h3>
+<p><strong>Talk to founders who've raised:</strong> People who've done it know what to avoid. When we were raising for 10 Minute School, regular conversations with the ShopUp founding team shaped our approach significantly.</p>
+<p><strong>Build an investor tracker:</strong> We made the mistake early of reaching out to investors without documentation. Later, a simple Google Sheet tracking outreach, first meeting, document sharing, and term sheet stage changed everything.</p>
+<p><strong>Connect through warm intros:</strong> A reference from a founder who raised from investor A is far more effective than a cold email. Prioritize finding these connections.</p>
+<p><strong>Send investor updates to prospects too:</strong> Don't limit updates to existing investors. Sending regular updates to potential investors keeps them informed and makes the eventual fundraising conversation easier.</p>
+<p><strong>Request feedback after every pitch:</strong> Investors have seen many businesses in your space. Their feedback is valuable, and showing openness to it signals the right kind of founder mindset.</p>
+<p><strong>Ask for a valuation range, don't give yours first:</strong> At 10MS, rather than stating our valuation, we asked investors what they were considering. Once we had multiple data points, we calibrated more accurately from market reality.</p>
+<p><strong>Keep MIS and data room ready:</strong> Things move fast after a term sheet. If your data room isn't prepared, you create delays — and delays create doubt.</p>
+<h3>Things to Avoid</h3>
+<p>Don't approach every investor — research sectors and regions they invest in first. Don't overwhelm investors in a first meeting — communicate the key points clearly. Don't present false numbers — you'll be caught in due diligence and it damages the whole founder community. Don't delay responses when investors request information. Don't react negatively to rejection — it's part of the process. Don't keep changing your data — inconsistent numbers significantly affect investor confidence. Don't mess up the cap table — complexity and unnecessary early dilution deter investors.</p>`
+  },
+  {
+    id:15,
+    title:"Financial Due Diligence Preparation",
+    summary:"A ten-segment breakdown of exactly what investors review during FDD — and how to prepare each section of your data room to pass cleanly.",
+    tags:["Due Diligence","Financial Metrics"],
+    readTime:"12 min read",
+    body:`<p>Financial due diligence is not an audit. It's a structured way for investors to answer three questions: Do we understand how this business makes money? Do the numbers reconcile across systems? Are there hidden risks that affect valuation?</p>
+<h3>Segment 1: Core Financial Statements and MIS</h3>
+<p>Investors start here. Income statement (how the business performed), balance sheet (where it stands), cash flow statement (how money actually moved), and MIS (how you manage the business). Gaps between MIS and financial statements are normal — what matters is whether you can explain them clearly.</p>
+<h3>Segment 2: Revenue Detail and Reconciliation</h3>
+<p>Investors trust transactions, not summaries. This segment proves every revenue line comes from a real customer, pricing and refunds are correctly captured, and revenue eventually converts to cash. Clean reconciliation between CRM, payment gateways, and bank statements builds credibility fast. Poor reconciliation creates delays.</p>
+<h3>Segment 3: User Metrics and Retention</h3>
+<p>For product-led businesses, revenue alone isn't enough. Engagement metrics show how often users return, conversion metrics show how users become paying customers, and retention cohorts show how long the value lasts. Weak retention doesn't kill a deal. Unexplained retention almost always weakens it.</p>
+<h3>Segment 4: Cost of Goods Sold and Gross Margin</h3>
+<p>This segment ensures gross margins aren't overstated. Investors identify all direct costs, check they're captured correctly, and understand the levers of margin improvement. If margins look unusually strong, this section gets more aggressive scrutiny.</p>
+<h3>Segments 5–10: Payroll, Marketing/CAC, G&A, Assets, Working Capital, Ownership</h3>
+<p>Payroll is the largest fixed cost and hardest to reduce — have justification for team structure and any capitalized employee costs. Marketing spend must link to user acquisition and demonstrate consistent CAC calculation. G&A reveals operational baseline costs and classification discipline. Asset and capitalization records must be defensible and consistently applied. Working capital shows day-to-day financial stability — liquidity issues appear here first. Ownership, related party transactions, and contingencies are the most sensitive section — surprises here delay deals far more than weak growth numbers.</p>
+<p>Financial due diligence is not about looking perfect. It's about being clear and prepared. If you can walk an investor through your Excel file without confusion, you're already ahead of most founders.</p>`
+  },
+  {
+    id:16,
+    title:"Tax Due Diligence Preparation",
+    summary:"A six-segment guide to TDD — from registration and filings to payroll tax compliance and VAT reconciliation — based on what investors actually request.",
+    tags:["Due Diligence","Legal & Compliance"],
+    readTime:"9 min read",
+    body:`<p>In Tax Due Diligence (TDD), investors are trying to answer three questions: Are all statutory tax obligations properly complied with? Do tax numbers reconcile with financial statements? Are there past or ongoing tax risks that could affect valuation?</p>
+<h3>Segment 1: Registration, Filings, and Exemptions</h3>
+<p>TDD starts with basic legitimacy. Tax registration certificates, VAT registration certificates, audited financial statements, income tax returns since inception, and any tax exemption approvals. Missing filings or expired registrations immediately slow down the process and raise concerns about broader discipline.</p>
+<h3>Segment 2: Tax Computation and Provision Reconciliation</h3>
+<p>Once filings are confirmed, attention shifts to numbers. Detailed tax computation files, expenditure breakdowns, tax status reports, deferred tax movements, advance tax schedules, aging of unpaid liabilities, withholding tax reconciliations, and purchase and sales registers. Differences between management accounts and statutory calculations are common — the linkage between them must be clear and traceable.</p>
+<h3>Segment 3: Assessments, Investigations, and Litigation</h3>
+<p>The focus moves from compliance to exposure. Tax status reports since inception, open assessments, pending cases, investigation reports, and tribunal orders. Tax disputes are common — what matters is transparency. Investors need to understand the nature, financial exposure, and current status of each matter.</p>
+<h3>Segment 4: Corporate Structure and Related Party Transactions</h3>
+<p>Mergers, acquisitions, disposals, or restructurings are reviewed for tax implications. Related party transactions are examined for documentation quality and commercial rationale. Poor documentation here creates governance concerns that affect valuation.</p>
+<h3>Segment 5: Payroll and Employee Tax Compliance</h3>
+<p>Employee personal tax calculations, salary sheets, and details of provident fund, gratuity fund, and superannuation contributions. This segment assesses whether payroll taxes were calculated correctly, withheld, and deposited on time.</p>
+<h3>Segment 6: Capital Assets and Indirect Tax Compliance</h3>
+<p>Capital asset acquisition and disposal history, monthly VAT returns, VAT payment challans, and rent deeds. Confirms that asset records align with tax treatment and that VAT filings reconcile with sales and purchase registers. Most indirect tax issues come from reconciliation gaps, not intent. When records are aligned, this section moves quickly.</p>`
+  },
+  {
+    id:17,
+    title:"Legal Due Diligence Preparation",
+    summary:"A six-segment breakdown of LDD — from corporate documents and material contracts to IP and litigation — and what investors are really looking for in each area.",
+    tags:["Due Diligence","Legal & Compliance"],
+    readTime:"10 min read",
+    body:`<p>Legal due diligence answers three questions: Is this company properly constituted and legally clean? Are its contracts enforceable and risk-free? Does the company own what it claims to own?</p>
+<h3>Segment 1: Corporate Documents</h3>
+<p>LDD begins by confirming the company exists in the form it claims to. Certified RJSC filings, Memorandum and Articles of Association, minutes books for board meetings and AGMs, share certificates, transfer registers, allotment forms, and regulatory approvals for capital increases. This establishes the full ownership history and confirms governance decisions were properly documented.</p>
+<h3>Segment 2: Material Contracts and Arrangements</h3>
+<p>Investors test whether key contracts are real, enforceable, and risk-free. A full list of active contracts, top supplier and customer agreements, lease agreements, related-party transactions, breach disclosures, and privacy policies. Investors look for exit clauses, change-of-control provisions, and termination triggers in every significant contract.</p>
+<h3>Segment 3: Licences, Permits, and Regulatory Compliance</h3>
+<p>This segment is short but its consequences are large. Trade licence, e-TIN certificate, and VAT registration. An expired trade licence or missing VAT registration is a regulatory liability that an investor must either fix or price into the deal.</p>
+<h3>Segment 4: Borrowings and Financial Obligations</h3>
+<p>All loans, credit facilities, overdrafts, leasing arrangements, and hire purchase facilities. Charges and mortgages on assets. Board resolutions for loan approvals. Director and shareholder guarantees. Loans extended to third parties. This gives investors the full debt picture and reveals related-party risk.</p>
+<h3>Segment 5: Human Resources and Employment</h3>
+<p>Org chart, full headcount data, service contracts for key officers and workers, HR manual and service rules, benefit fund documentation (provident, gratuity, group insurance), and consultant contracts. Consultant arrangements are reviewed separately for hidden employment classification risk.</p>
+<h3>Segment 6: Intellectual Property and Litigation</h3>
+<p>All patents, trademarks, and copyrights with registration certificates. IP sourced from third parties reviewed for licence terms and dependency risk. Any infringement correspondence or confidentiality disputes. Licensing agreements checked for value leakage. Full disclosure of pending litigation, regulatory inquiries, and statutory investigations. Most legal issues that delay fundraising rounds are not fundamental problems — they're documentation gaps, expired registrations, or informal contracts. If you can walk a lawyer through your data room without hesitation, you're already ahead of most founders.</p>`
+  }
+];
+
+let activeFilter = 'All';
+
+function renderPills(){
+  const c = document.getElementById('pills');
+  c.innerHTML = TOPICS.map(t=>`<button class="pill${t===activeFilter?' active':''}" onclick="filterBy('${t}')">${t}</button>`).join('');
+}
+
+function filterBy(t){
+  activeFilter = t;
+  renderPills();
+  renderCards();
+}
+
+function renderCards(){
+  const grid = document.getElementById('grid');
+  const filtered = activeFilter==='All' ? ARTICLES : ARTICLES.filter(a=>a.tags.some(tag=>tag===activeFilter));
+  if(!filtered.length){
+    grid.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:80px 0;opacity:.4;font-size:14px">No articles found for this topic.</div>`;
+    return;
+  }
+  grid.innerHTML = filtered.map(a=>`
+    <div class="card" onclick="openArticle(${a.id})">
+      <div class="card-tags">${a.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <h3>${a.title}</h3>
+      <p>${a.summary}</p>
+      <div class="card-meta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        ${a.readTime}
+      </div>
+      <div class="read-arrow">→</div>
+    </div>`).join('');
+}
+
+function openArticle(id){
+  const a = ARTICLES.find(x=>x.id===id);
+  if(!a) return;
+  document.getElementById('overlay-tags').innerHTML = a.tags.map(t=>`<span class="overlay-tag">${t}</span>`).join('');
+  document.getElementById('overlay-title').textContent = a.title;
+  document.getElementById('overlay-meta').textContent = a.readTime + ' · Shoumik Shahriar';
+  document.getElementById('overlay-body').innerHTML = a.body;
+  const ov = document.getElementById('overlay');
+  ov.classList.add('open');
+  ov.scrollTop = 0;
+  document.body.style.overflow='hidden';
+}
+
+function closeOverlay(){
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+document.getElementById('overlay').addEventListener('click',function(e){if(e.target===this)closeOverlay();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeOverlay();});
+
+renderPills();
+renderCards();
+</script>
+</body>
+</html>
